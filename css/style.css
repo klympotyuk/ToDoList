@@ -1,0 +1,14 @@
+.input{
+    display:none;
+}
+.main{
+    width: 850px;
+    height: 100%;
+    margin: 20px auto;
+}
+.add{
+    width: 500px;
+    margin: 40px auto;
+    height: 440px;
+    text-align: center;
+}

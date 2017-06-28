@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDoList</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <script src="script.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.css" rel="stylesheet" />  
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="workCtrl">
+    <input class="input" type="checkbox" ng-model="show" id="01">    
+    <div class="panel panel-default main" ng-switch on="show">
+        <h1 class="panel-heading">ToDoList</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th ng-switch-when="true">Description</th>
+                    <th>Date</th>
+                    <th>Completed</th>
+                    <th><label class="btn btn-default" for="01">More</label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in data">
+                    <td>{{data.name}}</td>
+                    <td ng-switch-when="true">{{data.description}}</td>
+                    <td>{{data.date}}</td>
+                    <td><input type="checkbox" ng-model="data.completed">&nbsp{{YorN(data.completed)}}</td>
+                    <td><button class="btn btn-default" ng-click="removeWork(data)">remove</button></td>
+                </tr>
+            </tbody>
+        </table>        
+        <div class="panel panel-default add">
+            <h5 class="panel-heading">Name</h5>
+            <input class="panel panel-default" type="text" ng-model="work">
+            <h5 class="panel-heading">Description</h5>
+            <textarea class="panel panel-default" ng-model="description"></textarea>
+            <h5 class="panel-heading">Date</h5>
+            <input class="panel panel-default" type="text" ng-model="date">
+            <h5><input type="checkbox" ng-model="completed"> Completed</h5>            
+            <button class="btn btn-default" ng-click="addWork()">Add</button>  
+        </div>       
+    </div>
+</body>
+</html>
